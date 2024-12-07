@@ -54,19 +54,21 @@ const AdminSchema = new Schema({
 // Category Schema
 const CategorySchema = new Schema({
   name: { type: String, required: true, unique: true },
+  image: { type: String }, 
   description: { type: String },
+
   products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 });
 
 // Product Schema
 const ProductSchema = new Schema({
-  name: { type: String, required: true },
-  price: { type: Number, required: true, min: 0 },
-  description: { type: String },
-  category: { type: Schema.Types.ObjectId, ref: 'Category', required: true }, // Reference to Category
-  stock: { type: Number, required: true, min: 0 },
-  imageUrl: { type: String },
-  createdAt: { type: Date, default: Date.now }
+  name: { type: String, required: true },  // Product name (e.g., "Amul Gold Cream Milk")
+  price: { type: Number, required: true, min: 0 },  // Regular price
+  discountPrice: { type: Number, min: 0 },  // Discounted price
+  quantity: { type: String },  // Product quantity (e.g., "500 ml")
+  category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },  // Reference to Category model
+  imageUrl: { type: String },  // URL of the product image
+  createdAt: { type: Date, default: Date.now },  // Automatically sets creation date
 });
 
 const User = mongoose.model('User', UserSchema);

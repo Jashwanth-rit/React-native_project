@@ -16,20 +16,20 @@ const mongoStore = new MongoStore({
 // Authentication
 export const authenticate = async (email, password) => {
 
-    if(email && password){
-        const user = await Admin.findOne({ email });
-        if(!user){
-            return null;
-        }
-        else{
-            return Promise.resolve({ email });
-        }
-    }
-//   if (email === 'jk.karunadu01@gmail.com' && password === 'Jk@karunadu01') {
-    
-//   } else {
-//     return null;
-//   }
+    // if(email && password){
+    //     const user = await Admin.findOne({ email });
+    //     if(!user){
+    //         return null;
+    //     }
+    //     else{
+    //         return Promise.resolve({ email });
+    //     }
+    // }
+  if (email === 'jk.karunadu01@gmail.com' && password === 'Jk@karunadu01') {
+    return Promise.resolve({ email });
+  } else {
+    return null;
+  }
 };
 
 export const PORT = process.env.port || 3000
